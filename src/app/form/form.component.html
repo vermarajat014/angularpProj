@@ -1,0 +1,63 @@
+<h2 style="text-align: center;">Book an Appointment</h2>
+<div class="container">
+  <div class="row">
+    <div class="col">
+      <form [formGroup]="registerForm" (ngSubmit)="onSubmit()" class="form">
+        <div class="form-group">
+          <label for="firstname">First Name:</label>
+          <input formControlName="firstName" [ngClass]="{'is-invalid': registerForm.controls['firstName'].errors}"
+            type="text" class="form-control" [(ngModel)]="firstName">
+          <div *ngIf="registerForm.controls['firstName'].errors && registerForm.get('firstName')?.dirty"
+            class="text-danger">
+            <div *ngIf="registerForm.controls['firstName'].errors['required']" class="text-danger">
+              First Name is required
+            </div>
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label for="lastname">Last Name:</label>
+          <input formControlName="lastName" [ngClass]="{'is-invalid':registerForm.controls['lastName'].errors}"
+            type="text" class="form-control" [(ngModel)]="lastName">
+          <div *ngIf="registerForm.controls['lastName'].errors && registerForm.get('lastName')?.dirty"
+            class="text-danger">
+            <div *ngIf="registerForm.controls['lastName'].errors['required']" class="text-danger">
+              Last Name is required
+            </div>
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label for="city">City:</label>
+          <input formControlName="city" [ngClass]="{'is-invalid': registerForm.controls['city'].invalid}" type="text"
+            class="form-control" [(ngModel)]="city">
+        </div>
+
+        <div class="form-group">
+          <label for="address">Address:</label>
+          <input formControlName="address" [ngClass]="{'is-invalid': registerForm.controls['address'].invalid}"
+            type="text" class="form-control" [(ngModel)]="address">
+          <div *ngIf="registerForm.controls['address'].errors && registerForm.get('address')?.dirty"
+            class="text-danger">
+            Address is required
+          </div>
+        </div>
+        <div class="form-group">
+          <label for="appointmentType">Appointment Type:</label>
+          <select formControlName="appointmentType" class="form-control" [(ngModel)]="appointmentType">
+            <option value="">Select Appointment Type</option>
+            <option value="General">General</option>
+            <option value="Specialist">Specialist</option>
+            <option value="Emergency">Emergency</option>
+          </select>
+        </div>
+        
+        <div class="form-group">
+          <button class="btn btn-primary">Submit</button>
+        </div>
+      </form>
+      
+    </div>
+  </div>
+</div>
+
